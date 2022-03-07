@@ -32,4 +32,4 @@ const merge = () => {
   }
 };
 
-await merge();
+merge();
