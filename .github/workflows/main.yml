@@ -16,3 +16,4 @@ jobs:
           base: develop
           head: uat
           label: auto-merge-to-uat
+          token: ${{ secrets.GITHUB_TOKEN }}
