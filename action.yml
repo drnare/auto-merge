@@ -2,7 +2,7 @@ name: 'AutoMerger'
 description: 'Auto merge a branch on PR close'
 inputs:
   github_token:
-    default: ${{ github.token }}
+    default: ${{ secrets.GITHUB_TOKEN }}
   base:
     description: 'Source branch'
     required: true
