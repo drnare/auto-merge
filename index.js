@@ -7,7 +7,7 @@ const merge = () => {
   const head = core.getInput('head');
   const label = core.getInput('label');
 
-  const { repo, number, labels, merged } = github.context.payload;
+  const { labels, merged } = github.context.payload;
 
   if (!merged) {
     console.log(`Merge into ${head} skipped: PR not merged.`);
