@@ -2,7 +2,7 @@ import core from '@actions/core';
 import github from '@actions/github';
 
 const merge = () => {
-  const token = core.getInput('token');
+  // const token = core.getInput('token');
   const base = core.getInput('base');
   const head = core.getInput('head');
   const label = core.getInput('label');
@@ -19,7 +19,7 @@ const merge = () => {
     return;
   }
 
-  const octokit = github.getOctokit(token);
+  const octokit = github.getOctokit(token || '');
 
   try {
     return octokit.repos.merge({
