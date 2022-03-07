@@ -1,15 +1,18 @@
-on: [pull_request]
+on:
+  pull_request:
+    types:
+      - closed
+      - open
 
 jobs:
-  hello_world_job:
+  auto_merge_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: AutoMerge to UAT
     steps:
-      - name: Hello world action step
-        id: hello
+      - name: AutoMerge merge step
+        id: AutoMerge
         uses: drnare/auto-merge@v1.0
         with:
-          who-to-greet: 'Plop BORED'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          base: develop
+          head: uat
+          label: auto-merge-to-uat

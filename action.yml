@@ -1,13 +1,17 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'AutoMerger'
+description: 'Auto merge a branch on PR close'
 inputs:
-  who-to-greet: # id of input
-    description: 'Who to greet'
+  github_token:
+    default: ${{ github.token }}
+  base:
+    description: 'Source branch'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  head:
+    description: 'Target branch'
+    required: true
+  label:
+    description: 'Required label to enable merge'
+    required: true
 runs:
   using: 'node16'
   main: 'dist/index.js'

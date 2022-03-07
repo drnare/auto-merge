@@ -1,15 +1,35 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
+import core from '@actions/core';
+import github from '@actions/github';
 
-try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  const time = new Date().toTimeString();
-  core.setOutput('time', time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2);
-  console.log(`The event payload: ${payload}`);
-} catch (error) {
-  core.setFailed(error.message);
-}
+const merge = () => {
+  const token = core.getInput('token');
+  const base = core.getInput('base');
+  const head = core.getInput('head');
+  const label = core.getInput('label');
+
+  const { repo, number, labels, merged } = github.context.payload;
+
+  if (!merged) {
+    console.log(`Merge into ${head} skipped: PR not merged.`);
+    return;
+  }
+
+  if (!labels.includes(label)) {
+    console.log(`Merge into ${head} skipped: Label '${label}' not found.`);
+    return;
+  }
+
+  const octokit = github.getOctokit(token);
+
+  try {
+    return octokit.repos.merge({
+      base,
+      head,
+      commit_message: `Merge branch '${base}' into ${head}`,
+    });
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+};
+
+await merge();
