@@ -1,12 +1,12 @@
 import core from '@actions/core';
 import github from '@actions/github';
 
-const merge = () => {
-  // const token = core.getInput('token');
-  const base = core.getInput('base');
-  const head = core.getInput('head');
-  const label = core.getInput('label');
+const token = core.getInput('token');
+const base = core.getInput('base');
+const head = core.getInput('head');
+const label = core.getInput('label');
 
+const merge = () => {
   const { repo, number, labels, merged } = github.context.payload;
 
   if (!merged) {

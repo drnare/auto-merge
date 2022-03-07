@@ -8517,12 +8517,12 @@ __nccwpck_require__.r(__webpack_exports__);
 
 
 
-const merge = () => {
-  // const token = core.getInput('token');
-  const base = _actions_core__WEBPACK_IMPORTED_MODULE_0___default().getInput('base');
-  const head = _actions_core__WEBPACK_IMPORTED_MODULE_0___default().getInput('head');
-  const label = _actions_core__WEBPACK_IMPORTED_MODULE_0___default().getInput('label');
+const token = _actions_core__WEBPACK_IMPORTED_MODULE_0___default().getInput('token');
+const base = _actions_core__WEBPACK_IMPORTED_MODULE_0___default().getInput('base');
+const head = _actions_core__WEBPACK_IMPORTED_MODULE_0___default().getInput('head');
+const label = _actions_core__WEBPACK_IMPORTED_MODULE_0___default().getInput('label');
 
+const merge = () => {
   const { repo, number, labels, merged } = (_actions_github__WEBPACK_IMPORTED_MODULE_1___default().context.payload);
 
   if (!merged) {
