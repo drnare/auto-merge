@@ -3,3 +3,5 @@
 Develop -> uat
 
 With label
+
+And merges
