@@ -13,7 +13,7 @@ jobs:
         id: AutoMerge
         uses: drnare/auto-merge@v1.0
         with:
-          base: develop
-          head: uat
+          source: develop
+          target: uat
           label: auto-merge-to-uat
           token: ${{ secrets.GITHUB_TOKEN }}
