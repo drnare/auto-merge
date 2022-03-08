@@ -25,6 +25,14 @@ const merge = () => {
     return;
   }
 
+  console.log({
+    owner: repo.owner.login,
+    repo: repo.name,
+    base,
+    head,
+    commit_message: `Merge branch '${head}' into ${base}`,
+  });
+
   const octokit = github.getOctokit(token);
 
   try {
