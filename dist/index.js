@@ -8473,12 +8473,15 @@ const github = __nccwpck_require__(549);
 
 const merge = () => {
   const token = core.getInput('token');
-  const base = core.getInput('base');
-  const head = core.getInput('head');
+  const base = core.getInput('target');
+  const head = core.getInput('source');
   const labelName = core.getInput('label');
 
   const {
-    pull_request: { labels },
+    pull_request: {
+      labels,
+      base: { repo },
+    },
     merged,
   } = github.context.payload;
 
@@ -8492,13 +8495,15 @@ const merge = () => {
     return;
   }
 
-  const octokit = github.getOctokit(token || '');
+  const octokit = github.getOctokit(token);
 
   try {
-    return octokit.merge({
+    return octokit.rest.repos.merge({
+      owner: repo.owner.login,
+      repo: repo.name,
       base,
       head,
-      commit_message: `Merge branch '${base}' into ${head}`,
+      commit_message: `Merge branch '${head}' into ${base}`,
     });
   } catch (error) {
     core.setFailed(error.message);
