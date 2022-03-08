@@ -1,3 +1,3 @@
 # auto-merge
 
-Modified in some-random-branch
+Modified in random-branch
