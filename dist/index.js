@@ -8486,12 +8486,12 @@ const merge = () => {
   } = github.context.payload;
 
   if (!merged) {
-    core.log(`Merge into ${head} skipped: PR not merged.`);
+    console.log(`Merge into ${head} skipped: PR not merged.`);
     return;
   }
 
   if (!labels.find((label) => label.name === labelName)) {
-    core.log(`Merge into ${head} skipped: Label '${label}' not found.`);
+    console.log(`Merge into ${head} skipped: Label '${label}' not found.`);
     return;
   }
 
