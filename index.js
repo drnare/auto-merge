@@ -11,8 +11,8 @@ const merge = () => {
     pull_request: {
       labels,
       base: { repo },
+      merged,
     },
-    merged,
   } = github.context.payload;
 
   if (!merged) {
