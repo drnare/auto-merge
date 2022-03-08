@@ -5,7 +5,7 @@ const merge = () => {
   const token = core.getInput('token');
   const base = core.getInput('base');
   const head = core.getInput('head');
-  const label = core.getInput('label');
+  const labelName = core.getInput('label');
 
   const {
     pull_request: { labels },
@@ -17,9 +17,7 @@ const merge = () => {
   //   return;
   // }
 
-  console.log(labels);
-
-  if (!labels.includes(label)) {
+  if (!labels.find((label) => label.name === labelName)) {
     console.log(`Merge into ${head} skipped: Label '${label}' not found.`);
     return;
   }
