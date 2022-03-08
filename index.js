@@ -21,7 +21,7 @@ const merge = () => {
   }
 
   if (!labels.find((label) => label.name === labelName)) {
-    console.log(`Merge into ${head} skipped: Label '${label}' not found.`);
+    console.log(`Merge into ${head} skipped: Label '${labelName}' not found.`);
     return;
   }
 
