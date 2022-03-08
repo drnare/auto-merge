@@ -1,13 +1,12 @@
-import core from '@actions/core';
-import github from '@actions/github';
-
-const token = core.getInput('token');
-const base = core.getInput('base');
-const head = core.getInput('head');
-const label = core.getInput('label');
+const core = require('@actions/core');
+const github = require('@actions/github');
 
 const merge = () => {
-  const { repo, number, labels, merged } = github.context.payload;
+  const token = core.getInput('token');
+  const base = core.getInput('base');
+  const head = core.getInput('head');
+  const label = core.getInput('label');
+  const { labels, merged } = github.context.payload;
 
   if (!merged) {
     console.log(`Merge into ${head} skipped: PR not merged.`);
