@@ -8482,8 +8482,6 @@ const merge = () => {
     merged,
   } = github.context.payload;
 
-  console.log(github.context.payload);
-
   // if (!merged) {
   //   console.log(`Merge into ${head} skipped: PR not merged.`);
   //   return;
