@@ -17,6 +17,8 @@ const merge = () => {
   //   return;
   // }
 
+  console.log(labels);
+
   if (!labels.includes(label)) {
     console.log(`Merge into ${head} skipped: Label '${label}' not found.`);
     return;
