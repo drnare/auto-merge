@@ -8476,7 +8476,13 @@ const merge = () => {
   const base = core.getInput('base');
   const head = core.getInput('head');
   const label = core.getInput('label');
-  const { labels, merged } = github.context.payload;
+
+  const {
+    pull_request: { labels },
+    merged,
+  } = github.context.payload;
+
+  console.log(github.context.payload);
 
   // if (!merged) {
   //   console.log(`Merge into ${head} skipped: PR not merged.`);
