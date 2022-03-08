@@ -8,10 +8,10 @@ const merge = () => {
   const label = core.getInput('label');
   const { labels, merged } = github.context.payload;
 
-  if (!merged) {
-    console.log(`Merge into ${head} skipped: PR not merged.`);
-    return;
-  }
+  // if (!merged) {
+  //   console.log(`Merge into ${head} skipped: PR not merged.`);
+  //   return;
+  // }
 
   if (!labels.includes(label)) {
     console.log(`Merge into ${head} skipped: Label '${label}' not found.`);
