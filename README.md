@@ -1,7 +1,3 @@
 # auto-merge
 
-Develop -> uat
-
-With label
-
-And merges
+Modified in some-random-branch
