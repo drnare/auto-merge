@@ -15,23 +15,15 @@ const merge = () => {
     merged,
   } = github.context.payload;
 
-  // if (!merged) {
-  //   console.log(`Merge into ${head} skipped: PR not merged.`);
-  //   return;
-  // }
-
-  if (!labels.find((label) => label.name === labelName)) {
-    console.log(`Merge into ${head} skipped: Label '${label}' not found.`);
+  if (!merged) {
+    core.log(`Merge into ${head} skipped: PR not merged.`);
     return;
   }
 
-  console.log({
-    owner: repo.owner.login,
-    repo: repo.name,
-    base,
-    head,
-    commit_message: `Merge branch '${head}' into ${base}`,
-  });
+  if (!labels.find((label) => label.name === labelName)) {
+    core.log(`Merge into ${head} skipped: Label '${label}' not found.`);
+    return;
+  }
 
   const octokit = github.getOctokit(token);
 
