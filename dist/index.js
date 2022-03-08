@@ -8495,7 +8495,7 @@ const merge = () => {
   const octokit = github.getOctokit(token || '');
 
   try {
-    return octokit.repos.merge({
+    return octokit.merge({
       base,
       head,
       commit_message: `Merge branch '${base}' into ${head}`,
