@@ -2,6 +2,8 @@
 
 Automatically merge branches when a labelled PR has been merged successfully.
 
+on UAT!
+
 # Example
 ```yaml
 on:
