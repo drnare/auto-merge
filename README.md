@@ -1,8 +1,8 @@
-# auto-merge
+# Auto Merge
 
 Automatically merge branches when a labelled PR has been merged successfully.
 
-# How to use
+# Example
 ```yaml
 on:
   pull_request:
