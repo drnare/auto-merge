@@ -9,7 +9,7 @@ jobs:
     name: Auto Merge to UAT
     steps:
       - name: Auto Merge merge step
-        id: Auto Merge
+        id: AutoMerge
         uses: drnare/auto-merge@v1.1
         with:
           source: main
