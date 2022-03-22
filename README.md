@@ -2,7 +2,7 @@
 
 Automatically merge branches when a labelled PR has been merged successfully.
 
-AUTOMATIC FOR UAT!
+AUTOMATIC MERGE INTO UAT!
 
 # Example
 ```yaml
