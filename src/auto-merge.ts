@@ -1,7 +1,9 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-const merge = () => {
+import { PullRequestEvent } from '@octokit/webhooks-types';
+
+export const merge = () => {
   const token = core.getInput('token');
   const base = core.getInput('target');
   const head = core.getInput('source');
@@ -12,11 +14,13 @@ const merge = () => {
       labels,
       base: { repo },
       merged,
+      number
     },
-  } = github.context.payload;
+  } = github.context.payload as PullRequestEvent;
+
 
   if (!merged) {
-    console.log(`Merge into ${head} skipped: PR not merged.`);
+    console.log(`Merge into ${head} skipped: PR#${number} not merged.`);
     return;
   }
 
@@ -28,16 +32,18 @@ const merge = () => {
   const octokit = github.getOctokit(token);
 
   try {
-    return octokit.rest.repos.merge({
+    octokit.rest.repos.merge({
       owner: repo.owner.login,
       repo: repo.name,
       base,
       head,
       commit_message: `Merge branch '${head}' into ${base}`,
-    });
+    })
   } catch (error) {
-    core.setFailed(error.message);
-  }
+    if (error instanceof Error) {
+      core.setFailed(error.message);
+    } else {
+      core.setFailed('Failed to merge.');
+    }
+  };
 };
-
-merge();
