@@ -6,10 +6,10 @@ on:
 jobs:
   auto_merge_job:
     runs-on: ubuntu-latest
-    name: AutoMerge to UAT
+    name: Auto Merge to UAT
     steps:
-      - name: AutoMerge merge step
-        id: AutoMerge
+      - name: Auto Merge merge step
+        id: Auto Merge
         uses: drnare/auto-merge@v1.0
         with:
           source: main
