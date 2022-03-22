@@ -4,10 +4,10 @@ inputs:
   token:
     description: 'Github token'
     required: true
-  base:
+  source:
     description: 'Source branch'
     required: true
-  head:
+  target:
     description: 'Target branch'
     required: true
   label:

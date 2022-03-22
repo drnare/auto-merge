@@ -2,7 +2,6 @@ on:
   pull_request:
     types:
       - closed
-      - open
 
 jobs:
   auto_merge_job:
@@ -13,7 +12,7 @@ jobs:
         id: AutoMerge
         uses: drnare/auto-merge@v1.0
         with:
-          source: develop
+          source: main
           target: uat
           label: auto-merge-to-uat
           token: ${{ secrets.GITHUB_TOKEN }}
